@@ -6,10 +6,13 @@ def calc_grad(X, Y, theta):
     """Calcula el gradiente de la pérdida con respecto a tita."""
     m, n = X.shape
 
+    lambda_value = 0.0225
 
     margins = Y * X.dot(theta)
     probs = 1. / (1 + np.exp(margins))
-    grad = -(1./m) * (X.T.dot(probs * Y))
+    grad = -(1./m) * (X.T.dot(probs * Y)) # + lambda_value
+
+    #grad = - 1 / m * (probs * Y) @ X 
 
     return grad
 
